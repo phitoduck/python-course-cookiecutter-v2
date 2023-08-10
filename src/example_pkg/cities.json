@@ -1,0 +1,233 @@
+[
+    {
+        "city": "Montgomery",
+        "state": "Alabama",
+        "lat": 32.3792233,
+        "lng": -86.3077368,
+        "capital": true
+    },
+    {
+        "city": "Juneau",
+        "state": "Alaska",
+        "lat": 58.3019444,
+        "lng": -134.4197222,
+        "capital": true
+    },
+    {
+        "city": "Phoenix",
+        "state": "Arizona",
+        "lat": 33.4483771,
+        "lng": -112.0740373,
+        "capital": true
+    },
+    {
+        "city": "Little Rock",
+        "state": "Arkansas",
+        "lat": 34.7464809,
+        "lng": -92.2895948,
+        "capital": true
+    },
+    {
+        "city": "Sacramento",
+        "state": "California",
+        "lat": 38.5757647,
+        "lng": -121.4788515,
+        "capital": true
+    },
+    {
+        "city": "Denver",
+        "state": "Colorado",
+        "lat": 39.7392364,
+        "lng": -104.9848623,
+        "capital": true
+    },
+    {
+        "city": "Hartford",
+        "state": "Connecticut",
+        "lat": 41.7658043,
+        "lng": -72.6733723,
+        "capital": true
+    },
+    {
+        "city": "Dover",
+        "state": "Delaware",
+        "lat": 39.158168,
+        "lng": -75.5243682,
+        "capital": true
+    },
+    {
+        "city": "Tallahassee",
+        "state": "Florida",
+        "lat": 30.4382559,
+        "lng": -84.2807329,
+        "capital": true
+    },
+    {
+        "city": "Atlanta",
+        "state": "Georgia",
+        "lat": 33.7489954,
+        "lng": -84.3879824,
+        "capital": true
+    },
+    {
+        "city": "Honolulu",
+        "state": "Hawaii",
+        "lat": 21.3069444,
+        "lng": -157.8583333,
+        "capital": true
+    },
+    {
+        "city": "Boise",
+        "state": "Idaho",
+        "lat": 43.6150186,
+        "lng": -116.2023137,
+        "capital": true
+    },
+    {
+        "city": "Springfield",
+        "state": "Illinois",
+        "lat": 39.7983633,
+        "lng": -89.6549613,
+        "capital": true
+    },
+    {
+        "city": "Indianapolis",
+        "state": "Indiana",
+        "lat": 39.7683331,
+        "lng": -86.1583502,
+        "capital": true
+    },
+    {
+        "city": "Des Moines",
+        "state": "Iowa",
+        "lat": 41.6005448,
+        "lng": -93.6091064,
+        "capital": true
+    },
+    {
+        "city": "Topeka",
+        "state": "Kansas",
+        "lat": 39.0558243,
+        "lng": -95.6890185,
+        "capital": true
+    },
+    {
+        "city": "Frankfort",
+        "state": "Kentucky",
+        "lat": 38.2009055,
+        "lng": -84.8732835,
+        "capital": true
+    },
+    {
+        "city": "Baton Rouge",
+        "state": "Louisiana",
+        "lat": 30.4582829,
+        "lng": -91.1403196,
+        "capital": true
+    },
+    {
+        "city": "Augusta",
+        "state": "Maine",
+        "lat": 44.3106241,
+        "lng": -69.7794897,
+        "capital": true
+    },
+    {
+        "city": "Annapolis",
+        "state": "Maryland",
+        "lat": 38.9784453,
+        "lng": -76.4921829,
+        "capital": true
+    },
+    {
+        "city": "Boston",
+        "state": "Massachusetts",
+        "lat": 42.3600825,
+        "lng": -71.0588801,
+        "capital": true
+    },
+    {
+        "city": "Lansing",
+        "state": "Michigan",
+        "lat": 42.732535,
+        "lng": -84.5555347,
+        "capital": true
+    },
+    {
+        "city": "Oklahoma City",
+        "state": "Oklahoma",
+        "lat": 42.732535,
+        "lng": -84.5555347,
+        "capital": true
+    },
+    {
+        "city": "Salem",
+        "state": "Oregon",
+        "lat": 42.732535,
+        "lng": -84.5555347,
+        "capital": true
+    },
+    {
+        "city": "St. Paul",
+        "state": "Minnesota",
+        "lat": 44.9537029,
+        "lng": -93.0899578,
+        "capital": true
+    },
+    {
+        "city": "Jackson",
+        "state": "Mississippi",
+        "lat": 32.2987573,
+        "lng": -90.1848103,
+        "capital": true
+    },
+    {
+        "city": "Jefferson City",
+        "state": "Missouri",
+        "lat": 38.5767017,
+        "lng": -92.1735164,
+        "capital": true
+    },
+    {
+        "city": "Helena",
+        "state": "Montana",
+        "lat": 46.5958056,
+        "lng": -112.0270318,
+        "capital": true
+    },
+    {
+        "city": "Lincoln",
+        "state": "Nebraska",
+        "lat": 40.813616,
+        "lng": -96.7025955,
+        "capital": true
+    },
+    {
+        "city": "Carson City",
+        "state": "Nevada",
+        "lat": 39.1637984,
+        "lng": -119.7674034,
+        "capital": true
+    },
+    {
+        "city": "Concord",
+        "state": "New Hampshire",
+        "lat": 43.2081366,
+        "lng": -71.5375718,
+        "capital": true
+    },
+    {
+        "city": "Trenton",
+        "state": "New Jersey",
+        "lat": 40.2205824,
+        "lng": -74.759717,
+        "capital": true
+    },
+    {
+        "city": "Santa Fe",
+        "state": "New Mexico",
+        "lat": 35.6869752,
+        "lng": -105.937799,
+        "capital": true
+    }
+]
