@@ -1,17 +1,48 @@
-install:
-	bash run.sh install
+# Execute the "targets" in this file with `make <target>` e.g., `make test`.
+#
+# You can also run multiple in sequence, e.g. `make clean lint test serve-coverage-report`
+
+build:
+	bash run.sh build
 
 clean:
 	bash run.sh clean
 
-test:
-	bash run.sh test
+help:
+	bash run.sh help
 
-test-quick:
-	bash run.sh test:quick
+install:
+	bash run.sh install
+
+lint:
+	bash run.sh lint
+
+lint-ci:
+	bash run.sh lint:ci
+
+publish-prod:
+	bash run.sh publish:prod
+
+publish-test:
+	bash run.sh publish:test
+
+release-prod:
+	bash run.sh release:prod
+
+release-test:
+	bash run.sh release:test
+
+serve-coverage-report:
+	bash run.sh serve-coverage-report
 
 test-ci:
 	bash run.sh test:ci
 
-help:
-	bash run.sh help
+test-quick:
+	bash run.sh test:quick
+
+test:
+	bash run.sh run-tests
+
+test-wheel-locally:
+	bash run.sh test:wheel-locally
