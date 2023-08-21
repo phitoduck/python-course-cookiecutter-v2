@@ -13,4 +13,3 @@ install:
 
 generate-project:
 	bash run.sh generate-project
-
