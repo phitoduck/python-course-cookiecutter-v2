@@ -1,0 +1,85 @@
+name: Build, Test
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  check-version-txt:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Tag with the release version
+        run: |
+          git tag $(cat version.txt)
+
+  lint-format-and-static-code-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v3
+        with:
+          python-version: 3.8
+      - name: Install pre-commit
+        run: |
+          pip install pre-commit
+      - name: Lint, Format, and other static code quality checks
+        run: |
+          /bin/bash -x run.sh lint:ci
+
+  execute-tests:
+    needs:
+      - build-wheel-and-sdist
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v3
+        with:
+          python-version: 3.8
+      - name: Lint, Format, and other static code quality checks
+        run: |
+          make install
+          make test
+
+  push-tags:
+    needs:
+      - execute-tests
+      - lint-format-and-static-code-checks
+      - check-version-txt
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    steps:
+      - uses: actions/checkout@v3
+      - name: Push tags
+        run: |
+          git push origin --tags
+
+  # https://docs.github.com/en/actions/learn-github-actions/contexts#example-printing-context-information-to-the-log
+  dump-contexts-to-log:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dump GitHub context
+        id: github_context_step
+        run: echo '{% raw %}${{ toJSON(github) }}'{% endraw %}
+      - name: Dump job context
+        run: echo '{% raw %}${{ toJSON(job) }}'{% endraw %}
+      - name: Dump steps context
+        run: echo '{% raw %}${{ toJSON(steps) }}'{% endraw %}
+      - name: Dump runner context
+        run: echo '{% raw %}${{ toJSON(runner) }}'{% endraw %}
+      - name: Dump strategy context
+        run: echo '{% raw %}${{ toJSON(strategy) }}'{% endraw %}
+      - name: Dump matrix context
+        run: echo '{% raw %}${{ toJSON(matrix) }}'{% endraw %}
+      - name: Dump secrets
+        run: echo '{% raw %}${{ toJSON(secrets) }}'{% endraw %}
+      - name: Dump vars
+        run: echo '{% raw %}${{ toJSON(vars) }}'{% endraw %}
