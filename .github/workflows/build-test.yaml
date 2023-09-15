@@ -60,10 +60,6 @@ jobs:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v3
-      - name: Configure git CLI
-        run: |
-          git config --global user.email "git-bot-user@python-course.com"
-          git config --global user.name "phitoduck"
       - name: Push tags
         run: |
           git push origin --tags
