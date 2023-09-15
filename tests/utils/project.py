@@ -1,3 +1,5 @@
+"""Functions for creating a cookiecut project to be used in tests."""
+
 import json
 import subprocess
 from copy import deepcopy
@@ -8,6 +10,7 @@ from tests.consts import PROJECT_DIR
 
 
 def initialize_git_repo(repo_dir: Path):
+    """Run git commands to make a directory into a valid git repository."""
     # git init
     subprocess.run(["git", "init"], cwd=repo_dir, check=True)
     # commit the contents to the 'main' branch
@@ -17,6 +20,13 @@ def initialize_git_repo(repo_dir: Path):
 
 
 def generate_project(template_values: Dict[str, str], test_session_id: str):
+    """
+    Generate a boilerplate project that we can use to test the template.
+
+    :param template_values: jinja context used when populating template
+    :param test_session_id: potentially randomly generated string used to
+        ensure uniqueness of generated file names.
+    """
     template_values: Dict[str, str] = deepcopy(template_values)
     cookiecutter_config = {"default_context": template_values}
     cookiecutter_config_fpath = PROJECT_DIR / f"tests/cookiecutter-{test_session_id}.json"

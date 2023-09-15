@@ -1,3 +1,5 @@
+"""Fixture for a reusable cookiecut template project for tests."""
+
 import shutil
 import subprocess
 from pathlib import Path
@@ -5,6 +7,7 @@ from uuid import uuid4
 
 import pytest
 
+# pylint: disable=no-name-in-module
 from tests.utils.project import (
     generate_project,
     initialize_git_repo,
@@ -13,6 +16,7 @@ from tests.utils.project import (
 
 @pytest.fixture(scope="session")
 def project_dir() -> Path:
+    """Create an instance of our cookiecutter template to be re-used in tests."""
     test_session_id: str = generate_test_session_id()
     template_values = {
         "repo_name": f"test-repo-{test_session_id}",
@@ -27,5 +31,6 @@ def project_dir() -> Path:
 
 
 def generate_test_session_id() -> str:
+    """Return a andomly generated, unique string."""
     test_session_id = str(uuid4())[:6]
     return test_session_id
