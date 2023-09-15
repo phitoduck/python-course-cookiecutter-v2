@@ -42,7 +42,11 @@ jobs:
         uses: actions/setup-python@v3
         with:
           python-version: 3.8
-      - name: Lint, Format, and other static code quality checks
+      - name: Configure git CLI
+        run: |
+          git config --global user.email "git-bot-user@python-course.com"
+          git config --global user.name "phitoduck"
+      - name: Run tests
         run: |
           make install
           make test
