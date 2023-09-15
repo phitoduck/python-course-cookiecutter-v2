@@ -35,8 +35,6 @@ jobs:
           /bin/bash -x run.sh lint:ci
 
   execute-tests:
-    needs:
-      - build-wheel-and-sdist
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
