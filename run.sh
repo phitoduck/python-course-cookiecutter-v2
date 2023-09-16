@@ -117,8 +117,31 @@ function create-repo-if-not-exists {
     push-initial-readme-to-repo
 }
 
+# args:
+#    TEST_PYPI_TOKEN, PROD_PYPI_TOKEN - auth token for test and prod PyPI
+#    REPO_NAME - name of the repository
+#    GITHUB_USERNAME - name of my github user, e.g. phitoduck
 function configure-repo {
-    echo "..."
+    # configure github actions secrets
+    gh secret set TEST_PYPI_TOKEN \
+        --body "$TEST_PYPI_TOKEN" \
+        --repo "$GITHUB_USERNAME/$REPO_NAME"
+    gh secret set PROD_PYPI_TOKEN \
+        --body "$PROD_PYPI_TOKEN" \
+        --repo "$GITHUB_USERNAME/$REPO_NAME"
+
+    # protect main branch, enforcing passing build on feature branch before merge
+    BRANCH_NAME="main"
+    gh api -X PUT "repos/$GITHUB_USERNAME/$REPO_NAME/branches/$BRANCH_NAME/protection" \
+        -H "Accept: application/vnd.github+json" \
+        -F "required_status_checks[strict]=true" \
+        -F "required_status_checks[checks][][context]=check-version-txt" \
+        -F "required_status_checks[checks][][context]=lint-format-and-static-code-checks" \
+        -F "required_status_checks[checks][][context]=build-wheel-and-sdist" \
+        -F "required_status_checks[checks][][context]=execute-tests" \
+        -F "required_pull_request_reviews[required_approving_review_count]=1" \
+        -F "enforce_admins=null" \
+        -F "restrictions=null" > /dev/null
 }
 
 # args:
