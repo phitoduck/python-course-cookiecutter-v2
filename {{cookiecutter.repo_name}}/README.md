@@ -1,20 +1,20 @@
-# python-course-package
+# {{cookiecutter.repo_name}}
 
 ## Quick start
 
 ```bash
-pip install python-course-package
+pip install {{cookiecutter.repo_name}}
 ```
 
 ```python
-from example_pkg import ...
+from {{cookiecutter.package_import_name}} import ...
 ```
 
 ## Contributing
 
 ```bash
 # clone the repo
-git clone https://github.com/phitoduck/python-course-package.git
+git clone https://github.com/phitoduck/{{cookiecutter.repo_name}}.git
 
 # install the dev dependencies
 make install

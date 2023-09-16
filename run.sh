@@ -77,7 +77,7 @@ function try-load-dotenv {
     done < <(grep -v '^#' "$THIS_DIR/.env" | grep -v '^$')
 }
 
-# args: 
+# args:
 #    REPO_NAME - name of the repository
 #    GITHUB_USERNAME - name of my github user, e.g. phitoduck
 function push-initial-readme-to-repo {
@@ -91,7 +91,7 @@ function push-initial-readme-to-repo {
     git push origin main
 }
 
-# args: 
+# args:
 #    REPO_NAME - name of the repository
 #    GITHUB_USERNAME - name of my github user, e.g. phitoduck
 #    IS_PUBLIC_REPO - if true, the repository will be public, otherwise private
@@ -103,7 +103,7 @@ function create-repo-if-not-exists {
     gh repo view "$GITHUB_USERNAME/$REPO_NAME" > /dev/null \
         && echo "repo exists, exiting..." \
         && return 0
-    
+
     # otherwise we'll create the repository
     if [[ "$IS_PUBLIC_REPO" == "true" ]]; then
         PUBLIC_OR_PRIVATE="public"

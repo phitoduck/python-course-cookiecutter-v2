@@ -1,3 +1,4 @@
 {
-    "repo_name": "repo-name"
+    "repo_name": "repo-name",
+    "package_import_name": "example_package"
 }
