@@ -16,6 +16,9 @@ on:
         description: Used in imports, e.g. `from <name> import ...`
         required: true
         type: string
+
+env:
+  GITHUB_TOKEN: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
     
 jobs:
   create-repo-if-not-exists:
@@ -59,4 +62,6 @@ jobs:
         env:
           REPO_NAME: ${{ github.event.inputs.repo_name }}
           GITHUB_USERNAME: phitoduck
+          
+      
   
