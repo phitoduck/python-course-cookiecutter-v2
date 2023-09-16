@@ -76,6 +76,45 @@ function try-load-dotenv {
         export "$line"
     done < <(grep -v '^#' "$THIS_DIR/.env" | grep -v '^$')
 }
+# args: 
+#    REPO_NAME - name of the repository
+#    GITHUB_USERNAME - name of my github user, e.g. phitoduck
+function push-initial-readme-to-repo {
+    rm -rf "$REPO_NAME"
+    gh repo clone "$GITHUB_USERNAME/$REPO_NAME"
+    cd "$REPO_NAME"
+    echo "# $REPO_NAME" > "README.md"
+    git branch -M main || true
+    git add --all
+    git commit -m "feat: created repository"
+    git push origin main
+}
+
+# args: 
+#    REPO_NAME - name of the repository
+#    GITHUB_USERNAME - name of my github user, e.g. phitoduck
+#    IS_PUBLIC_REPO - if true, the repository will be public, otherwise private
+function create-repo-if-not-exists {
+    local IS_PUBLIC_REPO=${IS_PUBLIC_REPO:-false}
+
+    # check to see if the repository exists; if it does, return
+    echo "Checking to see if $GITHUB_USERNAME/$REPO_NAME exists..."
+    gh repo view "$GITHUB_USERNAME/$REPO_NAME" > /dev/null \
+        && echo "repo exists, exiting..." \
+        && return 0
+    
+    # otherwise we'll create the repository
+    if [[ "$IS_PUBLIC_REPO" == "true" ]]; then
+        PUBLIC_OR_PRIVATE="public"
+    else
+        PUBLIC_OR_PRIVATE="private"
+    fi
+
+    echo "Repository does not exist, creating..."
+    gh repo create "$GITHUB_USERNAME/$REPO_NAME" "--$PUBLIC_OR_PRIVATE"
+
+    push-initial-readme-to-repo
+}
 
 # print all functions in this file
 function help {
