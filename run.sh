@@ -101,8 +101,7 @@ function create-repo-if-not-exists {
     # check to see if the repository exists; if it does, return
     echo "Checking to see if $GITHUB_USERNAME/$REPO_NAME exists..."
     gh repo view "$GITHUB_USERNAME/$REPO_NAME" > /dev/null \
-        && echo "repo exists, exiting..." \
-        && return 0
+        || (echo "repo exists, exiting..." && return 0)
 
     # otherwise we'll create the repository
     if [[ "$IS_PUBLIC_REPO" == "true" ]]; then
@@ -203,6 +202,18 @@ EOF
         --base main \
         --head "$UNIQUE_BRANCH_NAME" \
         --repo "$GITHUB_USERNAME/$REPO_NAME"
+}
+
+function create-sample-repo {
+    git add .github/ run.sh \
+    && git commit -m "fix: debugging the create-or-update-repo.yaml workflow" \
+    && git push origin main || true
+
+    gh workflow run .github/workflows/create-or-update-repo.yaml \
+        -f repo_name=generated-repo-4 \
+        -f package_import_name=generated_repo_4 \
+        -f is_public_repo=false \
+        --ref main
 }
 
 # print all functions in this file
