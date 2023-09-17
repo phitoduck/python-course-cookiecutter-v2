@@ -73,6 +73,7 @@ jobs:
           bash -x run.sh open-pr-with-generated-project
         env:
           REPO_NAME: ${{ github.event.inputs.repo_name }}
+          PACKAGE_IMPORT_NAME: ${{ github.event.inputs.package_import_name }}
           GITHUB_USERNAME: phitoduck
           
       
