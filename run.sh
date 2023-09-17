@@ -88,6 +88,9 @@ function push-initial-readme-to-repo {
     git branch -M main || true
     git add --all
     git commit -m "feat: created repository"
+    if [[ -n "$GH_TOKEN" ]]; then 
+        git remote set-url origin "https://$GITHUB_USERNAME:$GH_TOKEN@github.com/phitoduck/$REPO_NAME"
+    fi
     git push origin main
 }
 
@@ -194,6 +197,11 @@ EOF
 
     # commit the changes and push them to the remote feature branch
     git commit -m 'feat!: populated from `python-course-cookiecutter-v2` template'
+
+    # if GH_TOKEN is set, set the remote url to it
+    if [[ -n "$GH_TOKEN" ]]; then 
+        git remote set-url origin "https://$GITHUB_USERNAME:$GH_TOKEN@github.com/phitoduck/$REPO_NAME"
+    fi
     git push origin "$UNIQUE_BRANCH_NAME"
 
     # open a PR from the feature branch into main
