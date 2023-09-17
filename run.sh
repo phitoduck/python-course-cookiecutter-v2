@@ -142,7 +142,7 @@ function configure-repo {
         -F "required_status_checks[checks][][context]=lint-format-and-static-code-checks" \
         -F "required_status_checks[checks][][context]=build-wheel-and-sdist" \
         -F "required_status_checks[checks][][context]=execute-tests" \
-        -F "required_pull_request_reviews[required_approving_review_count]=1" \
+        -F "required_pull_request_reviews[required_approving_review_count]=0" \
         -F "enforce_admins=null" \
         -F "restrictions=null" > /dev/null
 }
