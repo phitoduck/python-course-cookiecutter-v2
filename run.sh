@@ -101,7 +101,7 @@ function create-repo-if-not-exists {
     # check to see if the repository exists; if it does, return
     echo "Checking to see if $GITHUB_USERNAME/$REPO_NAME exists..."
     gh repo view "$GITHUB_USERNAME/$REPO_NAME" > /dev/null \
-        || (echo "repo exists, exiting..." && return 0)
+        || exit 0
 
     # otherwise we'll create the repository
     if [[ "$IS_PUBLIC_REPO" == "true" ]]; then
