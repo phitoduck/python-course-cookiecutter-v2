@@ -210,8 +210,8 @@ function create-sample-repo {
     && git push origin main || true
 
     gh workflow run .github/workflows/create-or-update-repo.yaml \
-        -f repo_name=generated-repo-4 \
-        -f package_import_name=generated_repo_4 \
+        -f repo_name=generated-repo-5 \
+        -f package_import_name=generated_repo_5 \
         -f is_public_repo=false \
         --ref main
 }
