@@ -28,7 +28,7 @@ jobs:
         with:
           fetch-depth: 0
       - run: |
-          bash run.sh create-repo-if-not-exists
+          bash -x run.sh create-repo-if-not-exists
         env:
           REPO_NAME: ${{ github.event.inputs.repo_name }}
           GITHUB_USERNAME: phitoduck
@@ -43,7 +43,7 @@ jobs:
         with:
           fetch-depth: 0
       - run: |
-          bash run.sh configure-repo
+          bash -x run.sh configure-repo
         env:
           TEST_PYPI_TOKEN: ${{ secrets.TEST_PYPI_TOKEN }}
           PROD_PYPI_TOKEN: ${{ secrets.PROD_PYPI_TOKEN }}
@@ -58,7 +58,7 @@ jobs:
         with:
           fetch-depth: 0
       - run: |
-          bash run.sh open-pr-with-generated-project
+          bash -x run.sh open-pr-with-generated-project
         env:
           REPO_NAME: ${{ github.event.inputs.repo_name }}
           GITHUB_USERNAME: phitoduck
