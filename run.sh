@@ -89,7 +89,7 @@ function push-initial-readme-to-repo {
     git add --all
     git commit -m "feat: created repository"
     if [[ -n "$GH_TOKEN" ]]; then 
-        git remote set-url origin "https://$GITHUB_USERNAME:$GH_TOKEN@github.com/phitoduck/$REPO_NAME"
+        git remote set-url origin "https://$GITHUB_USERNAME:$GH_TOKEN@github.com/$GITHUB_USERNAME/$REPO_NAME"
     fi
     git push origin main
 }
