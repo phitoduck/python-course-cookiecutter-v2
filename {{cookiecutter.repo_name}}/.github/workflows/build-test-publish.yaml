@@ -108,16 +108,16 @@ jobs:
       - name: Install twine
         run: |
           pip install twine
-      - name: Publish to TestPyPI
-        run: |
-          /bin/bash -x run.sh publish:test
-        env:
-          TEST_PYPI_TOKEN: {% raw %}${{ secrets.TEST_PYPI_TOKEN }}{% endraw %}
-      - name: Publish to Prod PyPI
-        run: |
-          /bin/bash -x run.sh publish:prod
-        env:
-          PROD_PYPI_TOKEN: {% raw %}${{ secrets.PROD_PYPI_TOKEN }}{% endraw %}
+      # - name: Publish to TestPyPI
+      #   run: |
+      #     /bin/bash -x run.sh publish:test
+      #   env:
+      #     TEST_PYPI_TOKEN: {% raw %}${{ secrets.TEST_PYPI_TOKEN }}{% endraw %}
+      # - name: Publish to Prod PyPI
+      #   run: |
+      #     /bin/bash -x run.sh publish:prod
+      #   env:
+      #     PROD_PYPI_TOKEN: {% raw %}${{ secrets.PROD_PYPI_TOKEN }}{% endraw %}
       - name: Push tags
         run: |
           git tag $(cat version.txt)

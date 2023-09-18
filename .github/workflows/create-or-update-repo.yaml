@@ -19,7 +19,7 @@ on:
 
 env:
   GH_TOKEN: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
-    
+
 jobs:
   create-repo-if-not-exists:
     runs-on: ubuntu-latest
@@ -37,7 +37,7 @@ jobs:
           REPO_NAME: ${{ github.event.inputs.repo_name }}
           GITHUB_USERNAME: phitoduck
           IS_PUBLIC_REPO: ${{ github.event.inputs.is_public_repo }}
-        
+
 
   configure-repo:
     needs: [create-repo-if-not-exists]
@@ -75,6 +75,3 @@ jobs:
           REPO_NAME: ${{ github.event.inputs.repo_name }}
           PACKAGE_IMPORT_NAME: ${{ github.event.inputs.package_import_name }}
           GITHUB_USERNAME: phitoduck
-          
-      
-  
